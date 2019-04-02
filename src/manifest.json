@@ -1,0 +1,12 @@
+{
+  "name": "Storage Diff Viewer",
+  "version": "1.0",
+  "description": "Inspect the changes in storage",
+  "permissions": ["background", "tabs", "*://*/*"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "devtools_page": "devtools.html",
+  "manifest_version": 2
+}
