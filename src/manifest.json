@@ -10,10 +10,19 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
+      "run_at": "document_start",
       "js": ["content.js"]
     }
   ],
   "web_accessible_resources": ["inject.js"],
   "devtools_page": "devtools.html",
+  "commands": {
+    "clear-session-storage": {
+      "suggested_key": {
+        "default": "Alt+R"
+      },
+      "description": "Clear the session storage"
+    }
+  },
   "manifest_version": 2
 }

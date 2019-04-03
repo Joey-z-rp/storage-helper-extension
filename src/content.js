@@ -1,6 +1,4 @@
-
-
-
+let store = {};
 
 function injectScript(file, node) {
     var th = document.getElementsByTagName(node)[0];
@@ -9,12 +7,20 @@ function injectScript(file, node) {
     s.setAttribute('src', file);
     th.appendChild(s);
 }
-injectScript( chrome.extension.getURL('inject.js'), 'body');
+injectScript( chrome.extension.getURL('inject.js'), 'html');
 
 var storageHandler = function(e) {
-    chrome.runtime.sendMessage('session changed')
+    chrome.runtime.sendMessage({sessionStorage, store});
+    store = JSON.parse(JSON.stringify(sessionStorage));
 };
 
 document.addEventListener("itemInserted", storageHandler, false);
 
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.text === "clearSessionStorage") {
+            sessionStorage.clear();
+            location.reload();
+        }
+    });
