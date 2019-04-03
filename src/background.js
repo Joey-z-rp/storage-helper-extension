@@ -4,8 +4,8 @@ chrome.runtime.onConnect.addListener(function(devToolsConnection) {
         // Inject a content script into the identified tab
 
 
-        chrome.tabs.executeScript(message.tabId,
-            { file: message.scriptToInject });
+        // chrome.tabs.executeScript(message.tabId,
+        //     { file: message.scriptToInject });
 
         console.log(`in background, id: ${message.tabId}`)
         alert(`in background, id: ${message.tabId}`)
@@ -25,7 +25,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     // Messages from content scripts should have sender.tab set
     if (sender.tab) {
         var tabId = sender.tab.id;
-        alert(tabId)
         port.postMessage(request)
     } else {
         alert("sender.tab not defined.");
