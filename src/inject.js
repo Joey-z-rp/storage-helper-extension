@@ -8,5 +8,3 @@ sessionStorage.setItem = function() {
 
     console.log('inside set item')
 }
-
-alert('injected')

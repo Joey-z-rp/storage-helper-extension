@@ -16,11 +16,9 @@ var storageHandler = function(e) {
 
 document.addEventListener("itemInserted", storageHandler, false);
 
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.text === "clearSessionStorage") {
-            sessionStorage.clear();
-            location.reload();
-        }
-    });
+chrome.runtime.onMessage.addListener((request) => {
+    if (request.text === "clearSessionStorage") {
+        sessionStorage.clear();
+        location.reload();
+    }
+});
