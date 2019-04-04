@@ -1,6 +1,6 @@
 {
-  "name": "Clear your session",
-  "version": "1.0",
+  "name": "Session Helper",
+  "version": "0.1",
   "description": "Use Alt+R to clear your session and refresh the page",
   "permissions": ["background", "tabs", "*://*/*"],
   "background": {
