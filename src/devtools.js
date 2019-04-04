@@ -13,10 +13,15 @@ var backgroundPageConnection = chrome.runtime.connect({
   name: 'background'
 });
 backgroundPageConnection.onMessage.addListener(function (message) {
-  alert(JSON.stringify(message))
-  // Handle responses from the background page, if any
-  panelWindow.document.getElementById('title').innerText = JSON.stringify(message.sessionStorage);
-  panelWindow.document.getElementById('sec').innerText = JSON.stringify(message.store);
+  const key = document.createElement('div');
+  key.innerText = message.key;
+  const pre = document.createElement('div');
+  pre.innerText = message.prepreviousValue;
+  const current = document.createElement('div');
+  current.innerText = message.currentValue;
+  panelWindow.document.body.appendChild(key)
+  panelWindow.document.body.appendChild(pre)
+  panelWindow.document.body.appendChild(current)
 });
 
 // Relay the tab ID to the background page

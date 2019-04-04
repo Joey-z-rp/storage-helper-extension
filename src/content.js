@@ -9,8 +9,13 @@ function injectScript(file, node) {
 }
 injectScript( chrome.extension.getURL('inject.js'), 'html');
 
-var storageHandler = function(e) {
-    chrome.runtime.sendMessage({sessionStorage, store});
+const storageHandler = function(event) {
+    chrome.runtime.sendMessage({
+        key: event.detail.key,
+        previousValue: store[event.detail.key],
+        currentValue: event.detail.value,
+    });
+
     store = JSON.parse(JSON.stringify(sessionStorage));
 };
 

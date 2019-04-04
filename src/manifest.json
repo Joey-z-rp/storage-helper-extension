@@ -1,15 +1,20 @@
 {
-  "name": "Storage Diff Viewer",
+  "name": "Session Helper",
   "version": "1.0",
-  "description": "Inspect the changes in storage",
-  "permissions": ["background", "tabs", "*://*/*"],
+  "description": "Use Alt+R to clear your session and refresh the page",
+  "permissions": ["activeTab"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": [
+        "http://127.0.0.1/*",
+        "http://localhost/*",
+        "https://nxi.secure.budgetdirect.com.au/*",
+        "https://nxq.secure.budgetdirect.com.au/"
+      ],
       "run_at": "document_start",
       "js": ["content.js"]
     }
