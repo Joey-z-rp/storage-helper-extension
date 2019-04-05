@@ -1,8 +1,8 @@
 {
   "name": "Session Helper",
-  "version": "0.2",
-  "description": "Use Alt+R to clear your session and refresh the page",
-  "permissions": ["activeTab"],
+  "version": "0.3",
+  "description": "This extension provides convenient helper functions for session and local storage",
+  "permissions": ["activeTab", "storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -20,17 +20,29 @@
     }
   ],
   "commands": {
-    "clear-session-storage": {
+    "clearSessionStorage": {
       "suggested_key": {
         "default": "Alt+R"
       },
       "description": "Clear session storage"
     },
-    "clear-local-storage": {
+    "clearLocalStorage": {
       "suggested_key": {
         "default": "Alt+Shift+R"
       },
       "description": "Clear local storage"
+    },
+    "saveSessionStorage": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "Save session storage"
+    },
+    "loadSessionStorage": {
+      "suggested_key": {
+        "default": "Alt+L"
+      },
+      "description": "Load session storage"
     }
   },
   "manifest_version": 2
