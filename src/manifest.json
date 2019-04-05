@@ -24,7 +24,13 @@
       "suggested_key": {
         "default": "Alt+R"
       },
-      "description": "Clear the session storage"
+      "description": "Clear session storage"
+    },
+    "clear-local-storage": {
+      "suggested_key": {
+        "default": "Alt+Shift+R"
+      },
+      "description": "Clear local storage"
     }
   },
   "manifest_version": 2
