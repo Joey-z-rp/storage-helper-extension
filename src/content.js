@@ -1,6 +1,8 @@
 const commandMapping = {
-    'clear-session-storage': clearSessionStorage,
-    'clear-local-storage': clearLocalStorage,
+    clearSessionStorage,
+    clearLocalStorage,
+    saveSessionStorage,
+    loadSessionStorage,
 };
 
 chrome.runtime.onMessage.addListener((request) => {
@@ -15,6 +17,18 @@ function clearSessionStorage() {
 function clearLocalStorage() {
     localStorage.clear();
     location.reload();
+}
+
+function saveSessionStorage() {
+    chrome.storage.local.set({ session: Object.entries(sessionStorage) });
+}
+
+function loadSessionStorage() {
+    chrome.storage.local.get('session', (item) => {
+        item.session.forEach((entry) => {
+            sessionStorage.setItem(entry[0], entry[1]);
+        });
+    });
 }
 
 function executeCommand(command) {
