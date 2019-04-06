@@ -31,6 +31,18 @@ function loadSessionStorage() {
     });
 }
 
+function saveLocalStorage() {
+    chrome.storage.local.set({ local: Object.entries(localStorage) });
+}
+
+function loadLocalStorage() {
+    chrome.storage.local.get('local', (item) => {
+        item.local.forEach((entry) => {
+            localStorage.setItem(entry[0], entry[1]);
+        });
+    });
+}
+
 function executeCommand(command) {
     commandMapping[command]();
 }
