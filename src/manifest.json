@@ -2,7 +2,7 @@
   "name": "Session Helper",
   "version": "0.3",
   "description": "This extension provides convenient helper functions for session and local storage",
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "storage", "notifications"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
